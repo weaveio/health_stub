@@ -5,12 +5,7 @@ abstract class HealthValue {
   Map<String, dynamic> toJson();
 }
 
-enum RecordingMethod: Int {
-  case unknown = 0           // RECORDING_METHOD_UNKNOWN (not supported on iOS)
-  case active = 1            // RECORDING_METHOD_ACTIVELY_RECORDED (not supported on iOS)
-  case automatic = 2         // RECORDING_METHOD_AUTOMATICALLY_RECORDED
-  case manual = 3            // RECORDING_METHOD_MANUAL_ENTRY
-}
+enum RecordingMethod { unknown, active, automatic, manual }
 
 enum HealthPlatformType { appleHealth, googleHealthConnect }
 
