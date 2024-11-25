@@ -28,13 +28,15 @@ class Health {
     return false;
   }
 
-  HealthConnectSdkStatus get healthConnectSdkStatus => false;
+Future<HealthConnectSdkStatus?> getHealthConnectSdkStatus() async {
+    return null;
+}
 
-  Future<List<HealthDataPoint>> getHealthDataFromTypes(
+  Future<List<HealthDataPoint>> getHealthDataFromTypes({
       required List<HealthDataType> types,
       required DateTime startTime,
       required DateTime endTime,
-      List<RecordingMethod> recordingMethodsToFilter = const [],) asyc {
+      List<RecordingMethod> recordingMethodsToFilter = const [],}) asyc {
     return [];
   }
 
