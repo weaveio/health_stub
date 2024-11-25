@@ -9,13 +9,14 @@ enum RecordingMethod { unknown, active, automatic, manual }
 
 enum HealthPlatformType { appleHealth, googleHealthConnect }
 
+enum HealthConnectSdkStatus { stub }
+
 class Health {
 
   /// The singleton [Health] instance.
   factory Health() => _instance;
-  static final _instance = Health._();
+  static final _instance = Health();
 
-  Health({bool useHealthConnectIfAvailable = false}) {}
   Future<bool> requestAuthorization(
       List<HealthDataType> types, {
         List<HealthDataAccess>? permissions,
@@ -23,15 +24,15 @@ class Health {
     return false;
   }
 
-Future<HealthConnectSdkStatus?> getHealthConnectSdkStatus() async {
-    return null;
-}
+  Future<HealthConnectSdkStatus?> getHealthConnectSdkStatus() async {
+      return null;
+  }
 
   Future<List<HealthDataPoint>> getHealthDataFromTypes({
       required List<HealthDataType> types,
       required DateTime startTime,
       required DateTime endTime,
-      List<RecordingMethod> recordingMethodsToFilter = const [],}) asyc {
+      List<RecordingMethod> recordingMethodsToFilter = const [],}) async {
     return [];
   }
 
@@ -41,14 +42,6 @@ Future<HealthConnectSdkStatus?> getHealthConnectSdkStatus() async {
       }) async {
     return false;
   }
-
-  Future<bool> requestAuthorization(
-      List<HealthDataType> types, {
-        List<HealthDataAccess>? permissions,
-      }) async {
-    return false;
-  }
-
 
 }
 
