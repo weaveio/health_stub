@@ -869,6 +869,12 @@ class HealthDataPoint {
   /// The name of the source from which the data point was fetched.
   String get sourceName => _sourceName;
 
+  /// The health platform that this data point was fetched.
+  HealthPlatformType get sourcePlatform => HealthPlatformType.appleHealth;
+
+  /// The id of the device from which the data point was fetched.
+  String get sourceDeviceId => 'undefined';
+
   @override
   bool operator ==(Object o) {
     return o is HealthDataPoint &&
