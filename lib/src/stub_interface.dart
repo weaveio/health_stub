@@ -5,8 +5,22 @@ abstract class HealthValue {
   Map<String, dynamic> toJson();
 }
 
-class HealthFactory {
-  HealthFactory({bool useHealthConnectIfAvailable = false}) {}
+enum RecordingMethod: Int {
+  case unknown = 0           // RECORDING_METHOD_UNKNOWN (not supported on iOS)
+  case active = 1            // RECORDING_METHOD_ACTIVELY_RECORDED (not supported on iOS)
+  case automatic = 2         // RECORDING_METHOD_AUTOMATICALLY_RECORDED
+  case manual = 3            // RECORDING_METHOD_MANUAL_ENTRY
+}
+
+enum HealthPlatformType { appleHealth, googleHealthConnect }
+
+class Health {
+
+  /// The singleton [Health] instance.
+  factory Health() => _instance;
+  static final _instance = Health._();
+
+  Health({bool useHealthConnectIfAvailable = false}) {}
   Future<bool> requestAuthorization(
       List<HealthDataType> types, {
         List<HealthDataAccess>? permissions,
@@ -14,10 +28,31 @@ class HealthFactory {
     return false;
   }
 
+  HealthConnectSdkStatus get healthConnectSdkStatus => false;
+
   Future<List<HealthDataPoint>> getHealthDataFromTypes(
-      DateTime startTime, DateTime endTime, List<HealthDataType> types) async {
+      required List<HealthDataType> types,
+      required DateTime startTime,
+      required DateTime endTime,
+      List<RecordingMethod> recordingMethodsToFilter = const [],) asyc {
     return [];
   }
+
+  Future<bool?> hasPermissions(
+      List<HealthDataType> types, {
+        List<HealthDataAccess>? permissions,
+      }) async {
+    return false;
+  }
+
+  Future<bool> requestAuthorization(
+      List<HealthDataType> types, {
+        List<HealthDataAccess>? permissions,
+      }) async {
+    return false;
+  }
+
+
 }
 
 /// A [HealthValue] object for workouts
