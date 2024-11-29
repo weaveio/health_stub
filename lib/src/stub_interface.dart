@@ -14,8 +14,8 @@ enum HealthConnectSdkStatus { stub }
 class Health {
 
   /// The singleton [Health] instance.
-  Health._();
-  static Health _instance = Health._();
+  Health._singleton();
+  static Health _instance = Health._singleton();
   static Health get instance => _instance;
 
 
