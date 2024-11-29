@@ -14,8 +14,10 @@ enum HealthConnectSdkStatus { stub }
 class Health {
 
   /// The singleton [Health] instance.
-  factory Health() => _instance;
-  static final _instance = Health();
+  Health._();
+  static Health _instance = Health._();
+  static Health get instance => _instance;
+
 
   Future<bool> requestAuthorization(
       List<HealthDataType> types, {
